@@ -92,12 +92,12 @@
   .fgs-occ small{font-size:11.5px}
 }
 @media (min-width:900px){
-  .fgs-hero{grid-template-columns:minmax(0,.733fr) minmax(0,1fr);column-gap:0;row-gap:3.2vw;align-items:center;max-width:none;padding:clamp(24px,2.4vw,56px) 3vw clamp(28px,2.8vw,60px)}
+  .fgs-hero{grid-template-columns:minmax(0,.733fr) minmax(0,1fr);column-gap:0;row-gap:clamp(14px,2.6vh,40px);align-items:center;max-width:none;padding:clamp(12px,2.2vh,34px) 3vw clamp(14px,2.6vh,40px)}
   .fgs-hero__txt{padding-right:4vw}
   .fgs-hero__title{max-width:none;font-size:clamp(52px,6.3vw,136px);line-height:.98;margin:0 0 clamp(16px,1.6vw,34px)}
   .fgs-hero__sub{font-size:clamp(15px,1.5vw,30px);line-height:1.5;max-width:18em}
   .fgs-hero__grid{gap:clamp(10px,1.1vw,24px)}
-  .fgs-occ{aspect-ratio:2.07/1;min-height:0;padding:clamp(12px,1.15vw,26px);border-radius:clamp(14px,1.2vw,26px)}
+  .fgs-occ{aspect-ratio:auto;height:clamp(105px,min(12.85vw,24vh),280px);min-height:0;padding:clamp(12px,1.15vw,26px);border-radius:clamp(14px,1.2vw,26px)}
   .fgs-occ span{font-size:clamp(14px,1.45vw,31px);line-height:1.1;font-weight:700;letter-spacing:.01em}
   .fgs-occ small{font-size:clamp(11px,.8vw,17px);line-height:1.25;margin-top:.3em}
   .fgs-occ::after{width:clamp(70px,6.3vw,130px);height:clamp(70px,6.3vw,130px);right:-1.6vw;top:-1.6vw}
