@@ -52,7 +52,7 @@
 .fgs-hero__sub{margin:0;font-size:16px;line-height:1.4;max-width:30ch;color:#6b5a45}
 .fgs-hero__cats{grid-column:1/-1;min-width:0}
 .fgs-hero__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
-.fgs-occ{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;min-height:130px;padding:16px;border-radius:16px;color:#fff;text-decoration:none;transition:transform .15s ease}
+.fgs-occ{box-sizing:border-box;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;min-height:130px;padding:16px;border-radius:16px;color:#fff;text-decoration:none;transition:transform .15s ease}
 .fgs-occ:hover{transform:translateY(-3px)}
 .fgs-hero a.fgs-occ,.fgs-hero a.fgs-occ:hover,.fgs-hero a.fgs-occ:focus{color:#fff}
 .fgs-hero a.fgs-occ--c3:not(.fgs-occ--img),.fgs-hero a.fgs-occ--c3:not(.fgs-occ--img):hover,.fgs-hero a.fgs-occ--c3:not(.fgs-occ--img):focus{color:#1d1a14}
@@ -76,12 +76,22 @@
   .fgs-occ small{font-size:11.5px}
 }
 @media (min-width:900px){
-  .fgs-hero{grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:48px;align-items:center;padding:56px 40px 40px}
-  .fgs-hero__title{font-size:60px}
-  .fgs-hero__sub{font-size:18px}
-  .fgs-hero__grid{gap:14px}
-  .fgs-occ{min-height:210px;padding:22px}
-  .fgs-occ span{font-size:26px}
-  .fgs-occ small{font-size:14px}
+  .fgs-hero{grid-template-columns:minmax(0,.733fr) minmax(0,1fr);column-gap:0;row-gap:3.8vw;align-items:center;max-width:none;padding:clamp(24px,2.4vw,56px) 3vw clamp(28px,2.8vw,60px)}
+  .fgs-hero__txt{padding-right:4vw}
+  .fgs-hero__title{max-width:none;font-size:clamp(44px,5vw,108px);line-height:.98;margin:0 0 clamp(14px,1.4vw,30px)}
+  .fgs-hero__sub{font-size:clamp(16px,1.6vw,32px);line-height:1.5;max-width:34ch}
+  .fgs-hero__grid{gap:clamp(10px,1.1vw,24px)}
+  .fgs-occ{aspect-ratio:2.07/1;min-height:0;padding:clamp(16px,1.75vw,36px);border-radius:clamp(14px,1.2vw,26px)}
+  .fgs-occ span{font-size:clamp(20px,2.1vw,44px);line-height:1.02}
+  .fgs-occ small{font-size:clamp(12px,1.1vw,23px);margin-top:.35em}
+  .fgs-occ::after{width:clamp(70px,6.3vw,130px);height:clamp(70px,6.3vw,130px);right:-1.6vw;top:-1.6vw}
+  /* círculos de Categorías principales: tamaño de la maqueta */
+  .fgs-hero__cats .swiper-wrapper{justify-content:center}
+  .fgs-hero__cats .swiper-slide,.fgs-hero__cats .home-category-name{text-align:center}
+  .fgs-hero__cats .swiper-slide{margin-right:clamp(26px,3.2vw,66px) !important}
+  .fgs-hero__cats .swiper-slide:last-child{margin-right:0 !important}
+  .fgs-hero__cats .home-category-image{width:clamp(88px,8.3vw,172px) !important;height:clamp(88px,8.3vw,172px) !important;margin:0 auto;border-radius:50%;overflow:hidden}
+  .fgs-hero__cats .home-category-image img{width:100% !important;height:100% !important;object-fit:cover}
+  .fgs-hero__cats .home-category-name{font-size:clamp(13px,1.2vw,24px) !important;margin-top:clamp(10px,1vw,20px) !important}
 }
 </style>
