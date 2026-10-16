@@ -61,13 +61,14 @@
 
 <div class="js-products-{{ section_id }}-container container-fluid">
     <div class="row">
-        {% if featured_products %}
-            {# FGS: encabezado de "Más vendidos" con el título a la izquierda y enlace "Ver todo" a la derecha #}
+        {% if featured_products or new_products or sale_products %}
+            {# FGS: encabezado con el título a la izquierda y enlace "Ver todo" a la derecha (Más vendidos, Nuevo y Sale) #}
+            {% set fgs_see_all = featured_products ? '/mas-vendidos/' : (new_products ? '/nuevo/' : '/sale/') %}
             <div class="fgs-sec-head col-12">
                 <h2 class="js-products-{{ section_id }}-title section-title h5 mb-1" {% if not section_title %}style="display: none;"{% endif %}>
                     {{ section_title }}
                 </h2>
-                <a class="fgs-seeall" href="/mas-vendidos/">Ver todo</a>
+                <a class="fgs-seeall" href="{{ fgs_see_all }}">Ver todo</a>
             </div>
         {% else %}
         <h2 class="js-products-{{ section_id }}-title section-title h5 mb-1 text-center col-12" {% if not section_title %}style="display: none;"{% endif %}>
@@ -113,21 +114,23 @@
     </div>
 {% endif %}
 
-{% if featured_products %}
+{% if featured_products or new_products or sale_products %}
+{% set fgs_store = featured_products ? 'home-products-featured' : (new_products ? 'home-products-new' : 'home-products-sale') %}
+{% set fgs_badge = featured_products ? 'Más vendido' : (new_products ? 'Nuevo' : 'Sale') %}
+{% set fgs_badge_bg = sale_products ? '#9c3a24' : '#1b1b1a' %}
 <style>
-/* FGS · Sección "Más vendidos" (solo esta sección; Nuevos y Oferta no cambian) */
-[data-store="home-products-featured"] .container-fluid{padding-left:3vw;padding-right:3vw}
-[data-store="home-products-featured"] .fgs-sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:clamp(14px,1.6vw,30px)}
-[data-store="home-products-featured"] .fgs-sec-head .section-title{text-align:left;margin:0;font-size:clamp(24px,2.6vw,50px);line-height:1.05;font-weight:700}
-[data-store="home-products-featured"] .fgs-seeall{flex:none;font-size:clamp(13px,1.05vw,20px);font-weight:600;text-decoration:underline;text-underline-offset:4px;color:inherit}
-[data-store="home-products-featured"] .fgs-seeall:hover{opacity:.7}
-/* Etiqueta "Más vendido" en cada producto */
-[data-store="home-products-featured"] .js-products-featured-grid > *{position:relative}
-[data-store="home-products-featured"] .js-products-featured-grid > *::before{content:"Más vendido";position:absolute;z-index:5;top:12px;left:12px;padding:5px 12px;border-radius:999px;background:#1b1b1a;color:#fff;font-size:12px;font-weight:700;line-height:1.2;letter-spacing:.01em;pointer-events:none}
-[data-store="home-products-featured"] .js-products-featured-grid img{border-radius:14px}
+/* FGS · Encabezado, "Ver todo" y etiqueta de cada sección ({{ fgs_badge }}). Cada sección lleva solo sus propios estilos. */
+[data-store="{{ fgs_store }}"] .container-fluid{padding-left:3vw;padding-right:3vw}
+[data-store="{{ fgs_store }}"] .fgs-sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:clamp(14px,1.6vw,30px)}
+[data-store="{{ fgs_store }}"] .fgs-sec-head .section-title{text-align:left;margin:0;font-size:clamp(24px,2.6vw,50px);line-height:1.05;font-weight:700}
+[data-store="{{ fgs_store }}"] .fgs-seeall{flex:none;font-size:clamp(13px,1.05vw,20px);font-weight:600;text-decoration:underline;text-underline-offset:4px;color:inherit}
+[data-store="{{ fgs_store }}"] .fgs-seeall:hover{opacity:.7}
+[data-store="{{ fgs_store }}"] .js-products-{{ section_id }}-grid > *{position:relative}
+[data-store="{{ fgs_store }}"] .js-products-{{ section_id }}-grid > *::before{content:"{{ fgs_badge }}";position:absolute;z-index:5;top:12px;left:12px;padding:5px 12px;border-radius:999px;background:{{ fgs_badge_bg }};color:#fff;font-size:12px;font-weight:700;line-height:1.2;letter-spacing:.01em;pointer-events:none}
+[data-store="{{ fgs_store }}"] .js-products-{{ section_id }}-grid img{border-radius:14px}
 @media (max-width:767px){
-  [data-store="home-products-featured"] .container-fluid{padding-left:16px;padding-right:16px}
-  [data-store="home-products-featured"] .js-products-featured-grid > *::before{top:8px;left:8px;padding:4px 9px;font-size:11px}
+  [data-store="{{ fgs_store }}"] .container-fluid{padding-left:16px;padding-right:16px}
+  [data-store="{{ fgs_store }}"] .js-products-{{ section_id }}-grid > *::before{top:8px;left:8px;padding:4px 9px;font-size:11px}
 }
 </style>
 {% endif %}
