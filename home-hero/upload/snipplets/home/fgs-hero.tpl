@@ -2,6 +2,7 @@
    Título y subtítulo: bloque "Mensaje de bienvenida" del editor.
    Tarjetas: primeros 4 banners del bloque "Banners promocionales" del editor (foto, título, subtítulo y link).
    Círculos de tipo de prenda: bloque "Categorías principales" del editor (se incluye debajo de las tarjetas).
+   Fondo del bloque (opcional): campo "Imagen de fondo" dentro de "Mensaje de bienvenida" en el editor; estilo claro u oscuro.
    Si un banner no tiene foto o no hay banners cargados, se muestra la tarjeta de color liso. #}
 {% set fgs_slides = settings.banner_promotional %}
 {% set fgs_fallback = [
@@ -10,7 +11,9 @@
     {'title': 'Finde y salidas', 'description': 'Fresco, cómodo y con onda', 'link': '/finde-y-salidas/'},
     {'title': 'Talles grandes', 'description': 'Hasta XXXL, mismo calce', 'link': '/talles-grandes/'}
 ] %}
-<section class="fgs-hero" data-store="home-welcome-message">
+{% set fgs_has_bg = 'fgs_hero_bg.jpg' | has_custom_image %}
+{% set fgs_dark = settings.fgs_hero_bg_style == 'dark' %}
+<section class="fgs-hero{% if fgs_has_bg %} fgs-hero--bg{% if fgs_dark %} fgs-hero--dark{% endif %}{% endif %}" data-store="home-welcome-message"{% if fgs_has_bg %} style="background-image:url('{{ 'fgs_hero_bg.jpg' | static_url | settings_image_url('1080p') }}')"{% endif %}>
   <div class="fgs-hero__txt">
     <h2 class="fgs-hero__title">{{ settings.welcome_message | default("¿Para qué te vestís?") }}</h2>
     <p class="fgs-hero__sub">{{ settings.welcome_text | default("Elegí la ocasión y te mostramos qué ponerte, de pies a cabeza.") }}</p>
@@ -69,6 +72,12 @@
 .fgs-occ--img{color:#fff}
 .fgs-occ--img::after{display:none}
 .fgs-occ--img::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(74,50,22,.88) 0%,rgba(74,50,22,.35) 45%,rgba(74,50,22,0) 75%)}
+.fgs-hero--bg{position:relative;isolation:isolate;max-width:none;background-size:cover;background-position:center}
+.fgs-hero--bg::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(239,239,239,.84)}
+.fgs-hero--dark::before{background:rgba(27,27,26,.8)}
+.fgs-hero--dark .fgs-hero__title{color:#f1efea}
+.fgs-hero--dark .fgs-hero__sub{color:#cfcac2}
+.fgs-hero--dark .home-category-name{color:#f1efea !important}
 @media (max-width:359px){
   .fgs-hero__title{font-size:30px}
   .fgs-occ{padding:12px;min-height:116px}
