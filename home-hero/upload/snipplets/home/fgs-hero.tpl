@@ -13,7 +13,7 @@
 </section>
 <style>
 .fgs-hero{display:grid;grid-template-columns:1fr;gap:20px;padding:28px 16px 24px;max-width:1400px;margin:0 auto;color:#4a3216}
-.fgs-hero__title{max-width:12ch;font-size:36px;line-height:1;font-weight:800;letter-spacing:-.01em;margin:0 0 10px;color:#4a3216}
+.fgs-hero__title{max-width:12ch;text-wrap:balance;font-size:36px;line-height:1;font-weight:800;letter-spacing:-.01em;margin:0 0 16px;color:#4a3216}
 .fgs-hero__sub{margin:0;font-size:16px;line-height:1.4;max-width:30ch;color:#6b5a45}
 .fgs-hero__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
 .fgs-occ{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;min-height:130px;padding:16px;border-radius:16px;color:#fff;text-decoration:none;transition:transform .15s ease}
