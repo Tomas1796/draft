@@ -1,0 +1,5 @@
+Poner acá las imágenes reales:
+- iconos-categorias/  : los 6 íconos 3D de Gemini (1-sastreros, 2-camisas, 3-zapatillas, 4-chombas, 5-remeras, 6-bermudas), ~400x400 px, <100 KB.
+                        Los PNG que hay ahora son los provisorios que armó Claude.
+- fondo/              : foto de fondo del bloque (1920x900, <400 KB). La elegida: sandalias sobre piso de madera, SIN texto.
+- fotos-ocasiones/    : fotos de Lucas para las 4 tarjetas (~1600x1000, <300 KB). Los PNG que hay son colores lisos provisorios.
