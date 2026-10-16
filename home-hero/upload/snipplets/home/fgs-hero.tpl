@@ -1,14 +1,43 @@
-{# FGS · Hero de ocasiones. Reemplaza la presentación del bloque "Mensaje de bienvenida". #}
-<section class="fgs-hero">
+{# FGS · Hero de ocasiones. Reemplaza la presentación del bloque "Mensaje de bienvenida".
+   Título y subtítulo: bloque "Mensaje de bienvenida" del editor.
+   Tarjetas: primeros 4 banners del bloque "Banners promocionales" del editor (foto, título, subtítulo y link).
+   Si un banner no tiene foto o no hay banners cargados, se muestra la tarjeta de color liso. #}
+{% set fgs_slides = settings.banner_promotional %}
+{% set fgs_fallback = [
+    {'title': 'Para laburar', 'description': 'Oficina, reuniones, home office', 'link': '/para-laburar/'},
+    {'title': 'Evento y casamiento', 'description': 'Casamiento, bautismo, una cena', 'link': '/evento-y-casamiento/'},
+    {'title': 'Finde y salidas', 'description': 'Fresco, cómodo y con onda', 'link': '/finde-y-salidas/'},
+    {'title': 'Talles grandes', 'description': 'Hasta XXXL, mismo calce', 'link': '/talles-grandes/'}
+] %}
+<section class="fgs-hero" data-store="home-welcome-message">
   <div class="fgs-hero__txt">
     <h2 class="fgs-hero__title">{{ settings.welcome_message | default("¿Para qué te vestís?") }}</h2>
     <p class="fgs-hero__sub">{{ settings.welcome_text | default("Elegí la ocasión y te mostramos qué ponerte, de pies a cabeza.") }}</p>
   </div>
   <div class="fgs-hero__grid">
-    <a class="fgs-occ fgs-occ--laburar" href="/para-laburar/"><span>Para laburar</span><small>Oficina, reuniones, home office</small></a>
-    <a class="fgs-occ fgs-occ--evento" href="/evento-y-casamiento/"><span>Evento y casamiento</span><small>Casamiento, bautismo, una cena</small></a>
-    <a class="fgs-occ fgs-occ--finde" href="/finde-y-salidas/"><span>Finde y salidas</span><small>Fresco, cómodo y con onda</small></a>
-    <a class="fgs-occ fgs-occ--grandes" href="/talles-grandes/"><span>Talles grandes</span><small>Hasta XXXL, mismo calce</small></a>
+    {% if fgs_slides and fgs_slides is not empty %}
+      {% for slide in fgs_slides %}
+        {% if loop.index <= 4 %}
+          <a class="fgs-occ fgs-occ--c{{ loop.index }}{% if slide.image %} fgs-occ--img{% endif %}" href="{{ slide.link ? (slide.link | setting_url) : '#' }}">
+            {% if slide.image %}
+              <img class="fgs-occ__img" loading="lazy" alt="{{ slide.title }}"
+                   src="{{ slide.image | static_url | settings_image_url('large') }}"
+                   srcset="{{ slide.image | static_url | settings_image_url('large') }} 480w, {{ slide.image | static_url | settings_image_url('huge') }} 640w, {{ slide.image | static_url | settings_image_url('original') }} 1024w"
+                   sizes="(min-width: 900px) 40vw, 50vw">
+            {% endif %}
+            <span>{{ slide.title }}</span>
+            {% if slide.description %}<small>{{ slide.description }}</small>{% endif %}
+          </a>
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      {% for slide in fgs_fallback %}
+        <a class="fgs-occ fgs-occ--c{{ loop.index }}" href="{{ slide.link }}">
+          <span>{{ slide.title }}</span>
+          <small>{{ slide.description }}</small>
+        </a>
+      {% endfor %}
+    {% endif %}
   </div>
 </section>
 <style>
@@ -18,13 +47,18 @@
 .fgs-hero__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
 .fgs-occ{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;min-height:130px;padding:16px;border-radius:16px;color:#fff;text-decoration:none;transition:transform .15s ease}
 .fgs-occ:hover{transform:translateY(-3px)}
+.fgs-occ span,.fgs-occ small{position:relative;z-index:2}
 .fgs-occ span{font-size:19px;line-height:1.05;font-weight:800}
 .fgs-occ small{margin-top:4px;font-size:12.5px;line-height:1.25;opacity:.88}
 .fgs-occ::after{content:"";position:absolute;right:-20px;top:-20px;width:84px;height:84px;border-radius:50%;border:1.5px solid currentColor;opacity:.25}
-.fgs-occ--laburar{background:#1f2a44}
-.fgs-occ--evento{background:#4a3226}
-.fgs-occ--finde{background:#cdb894;color:#1d1a14}
-.fgs-occ--grandes{background:#5b5e3c}
+.fgs-occ--c1{background:#1f2a44}
+.fgs-occ--c2{background:#4a3226}
+.fgs-occ--c3{background:#cdb894;color:#1d1a14}
+.fgs-occ--c4{background:#5b5e3c}
+.fgs-occ__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.fgs-occ--img{color:#fff}
+.fgs-occ--img::after{display:none}
+.fgs-occ--img::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(74,50,22,.88) 0%,rgba(74,50,22,.35) 45%,rgba(74,50,22,0) 75%)}
 @media (max-width:359px){
   .fgs-hero__title{font-size:30px}
   .fgs-occ{padding:12px;min-height:116px}
