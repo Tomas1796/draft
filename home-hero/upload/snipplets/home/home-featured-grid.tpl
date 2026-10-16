@@ -121,6 +121,12 @@
 <style>
 /* FGS · Encabezado, "Ver todo" y etiqueta de cada sección ({{ fgs_badge }}). Cada sección lleva solo sus propios estilos. */
 [data-store="{{ fgs_store }}"] .container-fluid{padding-left:3vw;padding-right:3vw}
+/* Menos aire entre secciones: el tema deja ~100 px debajo de cada fila de productos */
+[data-store="{{ fgs_store }}"]{margin-top:0 !important;margin-bottom:0 !important;padding-top:0 !important;padding-bottom:0 !important}
+[data-store="{{ fgs_store }}"] .container-fluid{padding-top:clamp(22px,2.6vw,48px);padding-bottom:clamp(6px,.8vw,16px)}
+[data-store="{{ fgs_store }}"] .row{margin-bottom:0 !important}
+[data-store="{{ fgs_store }}"] .js-products-{{ section_id }}-grid > *{margin-bottom:clamp(6px,.8vw,16px) !important;padding-bottom:0 !important}
+[data-store="{{ fgs_store }}"] .js-products-{{ section_id }}-grid > * > *{margin-bottom:0 !important}
 [data-store="{{ fgs_store }}"] .fgs-sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:clamp(14px,1.6vw,30px)}
 [data-store="{{ fgs_store }}"] .fgs-sec-head .section-title{text-align:left;margin:0;font-size:clamp(24px,2.6vw,50px);line-height:1.05;font-weight:700}
 [data-store="{{ fgs_store }}"] .fgs-seeall{flex:none;font-size:clamp(13px,1.05vw,20px);font-weight:600;text-decoration:underline;text-underline-offset:4px;color:inherit}
@@ -129,7 +135,7 @@
 [data-store="{{ fgs_store }}"] .js-products-{{ section_id }}-grid > *::before{content:"{{ fgs_badge }}";position:absolute;z-index:5;top:12px;left:12px;padding:5px 12px;border-radius:999px;background:{{ fgs_badge_bg }};color:#fff;font-size:12px;font-weight:700;line-height:1.2;letter-spacing:.01em;pointer-events:none}
 [data-store="{{ fgs_store }}"] .js-products-{{ section_id }}-grid img{border-radius:14px}
 @media (max-width:767px){
-  [data-store="{{ fgs_store }}"] .container-fluid{padding-left:16px;padding-right:16px}
+  [data-store="{{ fgs_store }}"] .container-fluid{padding-left:16px;padding-right:16px;padding-top:20px;padding-bottom:4px}
   [data-store="{{ fgs_store }}"] .js-products-{{ section_id }}-grid > *::before{top:8px;left:8px;padding:4px 9px;font-size:11px}
 }
 </style>
