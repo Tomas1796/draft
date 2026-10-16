@@ -76,22 +76,22 @@
   .fgs-occ small{font-size:11.5px}
 }
 @media (min-width:900px){
-  .fgs-hero{grid-template-columns:minmax(0,.733fr) minmax(0,1fr);column-gap:0;row-gap:3.8vw;align-items:center;max-width:none;padding:clamp(24px,2.4vw,56px) 3vw clamp(28px,2.8vw,60px)}
+  .fgs-hero{grid-template-columns:minmax(0,.733fr) minmax(0,1fr);column-gap:0;row-gap:3.2vw;align-items:center;max-width:none;padding:clamp(24px,2.4vw,56px) 3vw clamp(28px,2.8vw,60px)}
   .fgs-hero__txt{padding-right:4vw}
   .fgs-hero__title{max-width:none;font-size:clamp(44px,5vw,108px);line-height:.98;margin:0 0 clamp(14px,1.4vw,30px)}
-  .fgs-hero__sub{font-size:clamp(16px,1.6vw,32px);line-height:1.5;max-width:34ch}
+  .fgs-hero__sub{font-size:clamp(16px,1.6vw,32px);line-height:1.5;max-width:18em}
   .fgs-hero__grid{gap:clamp(10px,1.1vw,24px)}
-  .fgs-occ{aspect-ratio:2.07/1;min-height:0;padding:clamp(16px,1.75vw,36px);border-radius:clamp(14px,1.2vw,26px)}
-  .fgs-occ span{font-size:clamp(20px,2.1vw,44px);line-height:1.02}
-  .fgs-occ small{font-size:clamp(12px,1.1vw,23px);margin-top:.35em}
+  .fgs-occ{aspect-ratio:2.07/1;min-height:0;padding:clamp(12px,1.15vw,26px);border-radius:clamp(14px,1.2vw,26px)}
+  .fgs-occ span{font-size:clamp(14px,1.45vw,31px);line-height:1.1;font-weight:700;letter-spacing:.01em}
+  .fgs-occ small{font-size:clamp(11px,.8vw,17px);line-height:1.25;margin-top:.3em}
   .fgs-occ::after{width:clamp(70px,6.3vw,130px);height:clamp(70px,6.3vw,130px);right:-1.6vw;top:-1.6vw}
-  /* círculos de Categorías principales: tamaño de la maqueta */
-  .fgs-hero__cats .swiper-wrapper{justify-content:center}
-  .fgs-hero__cats .swiper-slide,.fgs-hero__cats .home-category-name{text-align:center}
-  .fgs-hero__cats .swiper-slide{margin-right:clamp(26px,3.2vw,66px) !important}
-  .fgs-hero__cats .swiper-slide:last-child{margin-right:0 !important}
-  .fgs-hero__cats .home-category-image{width:clamp(88px,8.3vw,172px) !important;height:clamp(88px,8.3vw,172px) !important;margin:0 auto;border-radius:50%;overflow:hidden}
+  /* círculos de Categorías principales: fila centrada, sin carrusel */
+  .fgs-hero__cats .swiper-container{overflow:visible !important}
+  .fgs-hero__cats .swiper-wrapper{display:flex !important;flex-wrap:wrap;justify-content:center;align-items:flex-start;transform:none !important;width:100% !important;gap:clamp(18px,2.6vw,56px)}
+  .fgs-hero__cats .swiper-slide{width:auto !important;flex:0 0 auto;margin:0 !important;text-align:center}
+  .fgs-hero__cats .swiper-slide-duplicate,.fgs-hero__cats .swiper-button-prev,.fgs-hero__cats .swiper-button-next{display:none !important}
+  .fgs-hero__cats .home-category-image{width:clamp(72px,6.2vw,128px) !important;height:clamp(72px,6.2vw,128px) !important;margin:0 auto;border-radius:50%;overflow:hidden}
   .fgs-hero__cats .home-category-image img{width:100% !important;height:100% !important;object-fit:cover}
-  .fgs-hero__cats .home-category-name{font-size:clamp(13px,1.2vw,24px) !important;margin-top:clamp(10px,1vw,20px) !important}
+  .fgs-hero__cats .home-category-name{font-size:clamp(12px,1vw,20px) !important;margin-top:clamp(8px,.8vw,16px) !important;text-align:center;max-width:clamp(90px,9vw,170px)}
 }
 </style>
