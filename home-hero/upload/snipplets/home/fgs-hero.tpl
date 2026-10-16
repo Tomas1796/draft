@@ -54,6 +54,9 @@
 .fgs-hero__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
 .fgs-occ{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;min-height:130px;padding:16px;border-radius:16px;color:#fff;text-decoration:none;transition:transform .15s ease}
 .fgs-occ:hover{transform:translateY(-3px)}
+.fgs-hero a.fgs-occ,.fgs-hero a.fgs-occ:hover,.fgs-hero a.fgs-occ:focus{color:#fff}
+.fgs-hero a.fgs-occ--c3:not(.fgs-occ--img),.fgs-hero a.fgs-occ--c3:not(.fgs-occ--img):hover,.fgs-hero a.fgs-occ--c3:not(.fgs-occ--img):focus{color:#1d1a14}
+.fgs-occ span,.fgs-occ small{color:inherit}
 .fgs-occ span,.fgs-occ small{position:relative;z-index:2}
 .fgs-occ span{font-size:19px;line-height:1.05;font-weight:800}
 .fgs-occ small{margin-top:4px;font-size:12.5px;line-height:1.25;opacity:.88}
