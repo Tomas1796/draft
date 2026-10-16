@@ -1,6 +1,7 @@
 {# FGS · Hero de ocasiones. Reemplaza la presentación del bloque "Mensaje de bienvenida".
    Título y subtítulo: bloque "Mensaje de bienvenida" del editor.
    Tarjetas: primeros 4 banners del bloque "Banners promocionales" del editor (foto, título, subtítulo y link).
+   Círculos de tipo de prenda: bloque "Categorías principales" del editor (se incluye debajo de las tarjetas).
    Si un banner no tiene foto o no hay banners cargados, se muestra la tarjeta de color liso. #}
 {% set fgs_slides = settings.banner_promotional %}
 {% set fgs_fallback = [
@@ -39,11 +40,17 @@
       {% endfor %}
     {% endif %}
   </div>
+  {% if settings.slider_categories and settings.slider_categories is not empty %}
+    <div class="fgs-hero__cats">
+      {% include 'snipplets/home/home-categories.tpl' %}
+    </div>
+  {% endif %}
 </section>
 <style>
 .fgs-hero{display:grid;grid-template-columns:1fr;gap:20px;padding:28px 16px 24px;max-width:1400px;margin:0 auto;color:#4a3216}
 .fgs-hero__title{max-width:12ch;text-wrap:balance;font-size:36px;line-height:1;font-weight:800;letter-spacing:-.01em;margin:0 0 16px;color:#4a3216}
 .fgs-hero__sub{margin:0;font-size:16px;line-height:1.4;max-width:30ch;color:#6b5a45}
+.fgs-hero__cats{grid-column:1/-1;min-width:0}
 .fgs-hero__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
 .fgs-occ{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;min-height:130px;padding:16px;border-radius:16px;color:#fff;text-decoration:none;transition:transform .15s ease}
 .fgs-occ:hover{transform:translateY(-3px)}
